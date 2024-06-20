@@ -28,7 +28,7 @@ Auction _$AuctionFromJson(Map<String, dynamic> json) => Auction(
           ? null
           : User.fromJson(json['winner'] as Map<String, dynamic>),
       status: $enumDecode(_$AuctionStatusEnumMap, json['status']),
-      bidCount: json['bid_count'] as int? ?? 0,
+      bidCount: (json['bid_count'] as num?)?.toInt() ?? 0,
       images: (json['images'] as List<dynamic>?)
               ?.map((e) => ItemImage.fromJson(e as Map<String, dynamic>))
               .toList() ??
